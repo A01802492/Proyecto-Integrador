@@ -14,6 +14,7 @@ int main()
     R1.proceso1();
     R1.bienvenida();
     }
+    R1.setkilometrosFinales();
     R1.aplicaDescuento();
     R1.imprimeDatos();
     R1.despedida();

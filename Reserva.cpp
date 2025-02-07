@@ -939,9 +939,6 @@ void Reserva::imprimeDatos()
     cout << "Sus datos son: " << endl;
     cout << "Usuario: " << iniciaSesionN << " Correo: " << iniciaSesionC << endl;
     cout << "Número de pasajeros: " << V1.pasajeros << endl;
-    cout << kilometrosFinales << endl;
-    cout << U[0].getKilometros()<<endl;
-    cout << U[1].getKilometros()<<endl;
     cout << "Para la fecha " << V1.fecha << " de Febrero. "; 
     V1.imprimeInfoVuelo();
     cout << "Y en vista de que aplica para nuestro descuento o no, ";
