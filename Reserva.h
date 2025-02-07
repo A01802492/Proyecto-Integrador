@@ -6,7 +6,11 @@
 class Reserva
 {
     private:
-        float descuento;
+        float descuento1;
+        float descuento2;
+        float descuento3;
+        float descuento4;
+        float descuento5;
         int cancel;
 
     public:

@@ -3,13 +3,19 @@
 #include "Vuelos.h"
 #include <iostream>
 #include <string>
+    Vuelos V1;
+    Usuario U1;
 
 using namespace std;
 
 Reserva::Reserva()
 {
     opcion = 0;
-    descuento = 0;
+    descuento1 = 0;
+    descuento2 = 0;
+    descuento3 = 0;
+    descuento4 = 0;
+    descuento5 = 0;
     cancel = 0;
 }
 
@@ -32,8 +38,6 @@ int Reserva::getOpcion()
 
 void Reserva::proceso1()
 {
-    Vuelos V1;
-    Usuario U1;
     if (opcion == 1)
     {
         U1.setNombre();
@@ -45,18 +49,22 @@ void Reserva::proceso1()
     {
         V1.selectVuelo();
         V1.imprimeInfoVuelo();
-        cout << "Vuelo seleccionado exitosamente" << endl;
+        if (V1.vuelo < 1 || V1.vuelo > 5){
+        
+        }
+        else{
+            cout << "Vuelo seleccionado exitosamente" << endl;
+        }
+        
     }
 
     if (opcion == 3)
     {
-        cout << "Su vuelo es el siguiente: " << endl;
         V1.imprimeInfoVuelo();
     }
 
     if (opcion == 4)
     {
-        cout << "Su vuelo es el siguiente: " << endl;
         V1.imprimeInfoVuelo();
         cout << "Desea cancelarlo? (1 Si, 0 No)" << endl;
         cin >> cancel;
@@ -72,18 +80,52 @@ void Reserva::proceso1()
 
 void Reserva::aplicaDescuento()
 {
-    Usuario U1;
-    descuento = U1.getKilometros()-(U1.getKilometros()*0.40);
+    if (U1.getKilometros() > 50000){
+    descuento1 = 1879-(1879*0.40);
+    descuento2 = 22399-(22399*0.40);
+    descuento3 = 3272-(3272*0.40);
+    descuento4 = 7878-(7878*0.40);
+    descuento5 = 4563-(4563*0.40);
+    }
+    else{
+        descuento1 = 1879;
+        descuento2 = 22399;
+        descuento3 = 3272;
+        descuento4 = 7878;
+        descuento5 = 4563;
+    }
 }
 
 float Reserva::getDescuento()
 {
-    return descuento;
+    return descuento1;
+    return descuento2;
+    return descuento3;
+    return descuento4;
+    return descuento5;
 }
 
 void Reserva::imprimeDatos()
 {
-
+    cout << "Sus datos son: " << endl;
+    cout << "Usuario: " << U1.getNombre() << " Correo: " << U1.getCorreo() << endl;
+    V1.imprimeInfoVuelo();
+    cout << "Y en vista de que aplica para nuestro descuento o no, ";
+    if (V1.vuelo == 1){
+        cout << "su total con descuento aplicado sería de: $" << descuento1 << endl;
+    }
+    if (V1.vuelo == 2){
+        cout << "su total con descuento aplicado sería de: $" << descuento2 << endl;
+    }
+    if (V1.vuelo == 3){
+        cout << "su total con descuento aplicado sería de: $" << descuento3 << endl;
+    }
+    if (V1.vuelo == 4){
+        cout << "su total con descuento aplicado sería de: $" << descuento4 << endl;
+    }
+    if (V1.vuelo == 5){
+        cout << "su total con descuento aplicado sería de: $" << descuento5 << endl;
+    }
 }
 
 void Reserva::despedida()
