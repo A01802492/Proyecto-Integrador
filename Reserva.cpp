@@ -942,6 +942,7 @@ void Reserva::imprimeDatos()
     cout << "Número de pasajeros: " << V1.pasajeros << endl;
     cout << "Para la fecha " << V1.fecha << " de Febrero. "; 
     V1.imprimeInfoVuelo();
+    cout << "Suma final de kilometros: " << kilometrosFinales << endl;
     cout << "Y en vista de que aplica para nuestro descuento o no, ";
     if (V1.vuelo == 1){
         cout << "su total con descuento aplicado sería de: $" << descuento1 << endl;
