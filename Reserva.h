@@ -19,6 +19,7 @@ class Reserva
         string iniciaSesionN;
         string iniciaSesionC;
         float kilometrosFinales;
+        int contadorUser;
 
     public:
     int opcion;

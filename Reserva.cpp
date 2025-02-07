@@ -24,6 +24,7 @@ Reserva::Reserva()
     iniciaSesionN = " ";
     iniciaSesionC = " ";
     kilometrosFinales = 0;
+    contadorUser = 0;
 }
 
 void Reserva::bienvenida()
@@ -50,6 +51,7 @@ void Reserva::proceso1()
         for (int i = 0; i < 3; i++) {
         do {
             nombreRepetido = false;
+            contadorUser += 1;
             U[i].setNombre();
             for (int j = 0; j < i; j++) {
                 if (U[i].getNombre() == U[j].getNombre()) {
@@ -186,252 +188,252 @@ void Reserva::proceso1()
 void Reserva::setkilometrosFinales()
 {
     if (V1.destino == "Cancún"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 1661;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Japón"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 11324;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Canadá"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 4093;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Alemania"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 9570;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Colombia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 3177;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Brasil"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 6755;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Dubái"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 12340;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Estados Unidos"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 4120;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "España"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 8940;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Italia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 8150;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Qatar"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 11900;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Argentina"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 5920;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Reino Unido"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 7850;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Chile"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 5430;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Países Bajos"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 8560;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Francia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 9120;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Panamá"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 3750;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Perú"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 4600;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Irlanda"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 2300;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Suiza"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 9450;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Rusia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 11200;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "India"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 12800;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Guatemala"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 1780;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Austria"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 10300;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Cuba"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 2900;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Ecuador"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 3350;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Bolivia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 3600;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Australia"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 13500;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Costa Rica"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 2150;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Turquía"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 10750;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "México"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 3900;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Honduras"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 1900;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Singapur"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 8250;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "El Salvador"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 14000;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Inglaterra"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 8600;  
             kilometrosFinales += U[i].kilometros;  
         } 
     }
 
     if (V1.destino == "Nicaragua"){
-        for (int i = 0; i < 3; i++) {  
+        for (int i = 0; i < contadorUser; i++) {  
             U[i].kilometros += 1950;  
             kilometrosFinales += U[i].kilometros;  
         } 
