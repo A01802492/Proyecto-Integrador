@@ -142,9 +142,8 @@ void Reserva::proceso1()
                     cout << "El correo ingresado es incorrecto" << endl;
                 }
             }
-            else
-            {
-                cout << "El nombre ingresado no existe" << endl;
+            if (iniciaSesionN != U[0].getNombre() || iniciaSesionN != U[1].getNombre() || iniciaSesionN != U[2].getNombre()){
+                cout << "El nombre ingresado no es correcto" << endl;
             }
         }
         else{
