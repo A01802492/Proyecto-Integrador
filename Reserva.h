@@ -6,16 +6,15 @@
 class Reserva
 {
     private:
-        int opcion;
         float descuento;
         int cancel;
 
     public:
+    int opcion;
     Reserva();
     void bienvenida();
     int getOpcion();
     void proceso1();
-    void proceso2();
     void aplicaDescuento();
     float getDescuento();
     void imprimeDatos();

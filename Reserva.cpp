@@ -32,9 +32,10 @@ int Reserva::getOpcion()
 
 void Reserva::proceso1()
 {
+    Vuelos V1;
+    Usuario U1;
     if (opcion == 1)
     {
-        Usuario U1;
         U1.setNombre();
         U1.setCorreo();
         U1.setKilometros();
@@ -42,10 +43,30 @@ void Reserva::proceso1()
     }
     if (opcion == 2)
     {
-        Vuelos V1;
         V1.selectVuelo();
         V1.imprimeInfoVuelo();
         cout << "Vuelo seleccionado exitosamente" << endl;
+    }
+
+    if (opcion == 3)
+    {
+        cout << "Su vuelo es el siguiente: " << endl;
+        V1.imprimeInfoVuelo();
+    }
+
+    if (opcion == 4)
+    {
+        cout << "Su vuelo es el siguiente: " << endl;
+        V1.imprimeInfoVuelo();
+        cout << "Desea cancelarlo? (1 Si, 0 No)" << endl;
+        cin >> cancel;
+
+        if (cancel == 1){
+        V1.vuelo = 0;
+        }
+        else {
+
+        }
     }
 }
 
@@ -60,25 +81,6 @@ float Reserva::getDescuento()
     return descuento;
 }
 
-void Reserva::proceso2()
-{
-    if (opcion == 4)
-    {
-        Vuelos V1;
-        cout << "Su vuelo es el siguiente: " << endl;
-        V1.imprimeInfoVuelo();
-        cout << "Desea cancelarlo? (1 Si, 0 No)" << endl;
-        cin >> cancel;
-
-        if (cancel == 1){
-        V1.getVuelo() = 0;
-        }
-        else {
-
-        }
-    }
-}
-
 void Reserva::imprimeDatos()
 {
 
@@ -86,7 +88,7 @@ void Reserva::imprimeDatos()
 
 void Reserva::despedida()
 {
-
+    cout << "Gracias por elegir Choreflights" << endl;
 }
 
 Reserva::~Reserva()
