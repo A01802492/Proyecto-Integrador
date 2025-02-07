@@ -11,12 +11,15 @@ class Usuario
         string nombre;
         string correo;
         int kilometros;
+        
 
     public:
+        int usuarioExistente;
         Usuario();
         void setNombre();
         void setCorreo();
         void setKilometros();
+        int getUsuarioExist();
         string getNombre();
         string getCorreo();
         int getKilometros();

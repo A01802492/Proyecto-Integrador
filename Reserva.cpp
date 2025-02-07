@@ -21,7 +21,7 @@ Reserva::Reserva()
 
 void Reserva::bienvenida()
 {
-    cout << "Bienvenido a Choreflights" << endl;
+    cout << "Bienvenido a ViajandoAndo" << endl;
     cout << "Qué desea realizar?" << endl;
     cout << "<1> Crear un usuario" << endl;
     cout << "<2> Ver la lista de vuelos" << endl;
@@ -47,24 +47,35 @@ void Reserva::proceso1()
     }
     if (opcion == 2)
     {
-        V1.selectVuelo();
-        V1.imprimeInfoVuelo();
-        if (V1.vuelo < 1 || V1.vuelo > 5){
+        if (U1.usuarioExistente == 1){
+            V1.selectFecha();
+            V1.selectVuelo();
+            V1.imprimeInfoVuelo();
+            if (V1.vuelo < 1 || V1.vuelo > 5){
         
+            }
+            else{
+                cout << "Vuelo seleccionado exitosamente" << endl;
+            }
         }
         else{
-            cout << "Vuelo seleccionado exitosamente" << endl;
+            cout << "Primero cree un usuario por favor" << endl;
         }
-        
     }
 
     if (opcion == 3)
     {
+        if (U1.usuarioExistente == 1){
         V1.imprimeInfoVuelo();
+        }
+        else{
+            cout << "Primero cree un usuario por favor" << endl;
+        }
     }
 
     if (opcion == 4)
     {
+        if (U1.usuarioExistente == 1){
         V1.imprimeInfoVuelo();
         cout << "Desea cancelarlo? (1 Si, 0 No)" << endl;
         cin >> cancel;
@@ -74,6 +85,10 @@ void Reserva::proceso1()
         }
         else {
 
+        }
+        }
+        else{
+            cout << "Primero cree un usuario por favor" << endl;
         }
     }
 }
@@ -107,6 +122,7 @@ float Reserva::getDescuento()
 
 void Reserva::imprimeDatos()
 {
+    if (U1.usuarioExistente == 1){
     cout << "Sus datos son: " << endl;
     cout << "Usuario: " << U1.getNombre() << " Correo: " << U1.getCorreo() << endl;
     V1.imprimeInfoVuelo();
@@ -126,11 +142,15 @@ void Reserva::imprimeDatos()
     if (V1.vuelo == 5){
         cout << "su total con descuento aplicado sería de: $" << descuento5 << endl;
     }
+    }
+    else{
+        cout << "No se creó un usuario correctamente" << endl;
+    }
 }
 
 void Reserva::despedida()
 {
-    cout << "Gracias por elegir Choreflights" << endl;
+    cout << "Gracias por elegir ViajandoAndo" << endl;
 }
 
 Reserva::~Reserva()

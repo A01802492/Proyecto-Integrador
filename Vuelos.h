@@ -4,10 +4,12 @@
 class Vuelos
 {
     private:
-        
+        int fecha;
     public:
         int vuelo;
         Vuelos();
+        void selectFecha();
+        int Fecha();
         void selectVuelo();
         int getVuelo();
         void imprimeInfoVuelo();

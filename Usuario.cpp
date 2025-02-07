@@ -9,6 +9,7 @@ Usuario::Usuario()
     nombre = " ";
     correo = " ";
     kilometros = 0;
+    usuarioExistente = 0;
 }
 
 void Usuario::setNombre()
@@ -27,6 +28,7 @@ void Usuario::setKilometros()
 {
     cout << "Ingresa la cantidad de kilometros ya viajados: ";
     cin >> kilometros;
+    usuarioExistente = 1;
 }
 
 string Usuario::getNombre()
@@ -42,6 +44,11 @@ string Usuario::getCorreo()
 int Usuario::getKilometros()
 {
     return kilometros;
+}
+
+int Usuario::getUsuarioExist()
+{
+    return usuarioExistente;
 }
 
 Usuario::~Usuario()
