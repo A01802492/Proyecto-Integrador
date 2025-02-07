@@ -10,10 +10,9 @@ class Usuario
     private:
         string nombre;
         string correo;
-        int kilometros;
-        
 
     public:
+        int kilometros;
         int usuarioExistente;
         Usuario();
         void setNombre();

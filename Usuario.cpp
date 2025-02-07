@@ -1,6 +1,7 @@
 #include "Usuario.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ int Usuario::getUsuarioExist()
 {
     return usuarioExistente;
 }
+
 
 Usuario::~Usuario()
 {

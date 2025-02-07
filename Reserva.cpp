@@ -3,8 +3,10 @@
 #include "Vuelos.h"
 #include <iostream>
 #include <string>
+#include <vector>
+
     Vuelos V1;
-    Usuario U1;
+    Usuario U[3];
 
 using namespace std;
 
@@ -17,6 +19,11 @@ Reserva::Reserva()
     descuento4 = 0;
     descuento5 = 0;
     cancel = 0;
+    nuevouser = 0;
+    nombreRepetido = false;
+    iniciaSesionN = " ";
+    iniciaSesionC = " ";
+    kilometrosFinales = 0;
 }
 
 void Reserva::bienvenida()
@@ -40,22 +47,102 @@ void Reserva::proceso1()
 {
     if (opcion == 1)
     {
-        U1.setNombre();
-        U1.setCorreo();
-        U1.setKilometros();
+        for (int i = 0; i < 3; i++) {
+        do {
+            nombreRepetido = false;
+            U[i].setNombre();
+            for (int j = 0; j < i; j++) {
+                if (U[i].getNombre() == U[j].getNombre()) {
+                    cout << "Error: El nombre ya existe. Ingrese otro." << endl;
+                    nombreRepetido = true;
+                    break; 
+                }
+            }
+        } while (nombreRepetido);
+
+        U[i].setCorreo();
+        U[i].setKilometros();
         cout << "Usuario creado exitosamente" << endl;
+        if (i < 2) {
+            cout << "Desea agregar otro usuario? (1 Sí, 0 No): ";
+            cin >> nuevouser;
+            if (nuevouser == 0) {
+                break;
+            }
+            }
+        }
     }
+
     if (opcion == 2)
     {
-        if (U1.usuarioExistente == 1){
-            V1.selectFecha();
-            V1.selectVuelo();
-            V1.imprimeInfoVuelo();
-            if (V1.vuelo < 1 || V1.vuelo > 5){
+        if (U[0].usuarioExistente == 1){
+            cout << "Ingrese el nombre de su usuario para iniciar sesión: ";
+            cin >> iniciaSesionN;
+            if (iniciaSesionN == U[0].getNombre()){
+                cout << "Ahora por favor ingrese su correo: ";
+                cin >> iniciaSesionC;
+                if (iniciaSesionC == U[0].getCorreo()){
+                    V1.selectFecha();
+                    V1.setPasajeros();
+                    V1.selectVuelo();
+                    V1.imprimeInfoVuelo();
+                    if (V1.vuelo < 1 || V1.vuelo > 5){
         
+                    }
+                    else{
+                        cout << "Vuelo seleccionado exitosamente" << endl;
+                    }
+                }
+                else
+                {
+                    cout << "El correo ingresado es incorrecto" << endl;
+                }
             }
-            else{
-                cout << "Vuelo seleccionado exitosamente" << endl;
+
+            if (iniciaSesionN == U[1].getNombre()){
+                cout << "Ahora por favor ingrese su correo: ";
+                cin >> iniciaSesionC;
+                if (iniciaSesionC == U[1].getCorreo()){
+                    V1.selectFecha();
+                    V1.setPasajeros();
+                    V1.selectVuelo();
+                    V1.imprimeInfoVuelo();
+                    if (V1.vuelo < 1 || V1.vuelo > 5){
+        
+                    }
+                    else{
+                        cout << "Vuelo seleccionado exitosamente" << endl;
+                    }
+                }
+                else
+                {
+                    cout << "El correo ingresado es incorrecto" << endl;
+                }
+            }
+
+            if (iniciaSesionN == U[2].getNombre()){
+                cout << "Ahora por favor ingrese su correo: ";
+                cin >> iniciaSesionC;
+                if (iniciaSesionC == U[2].getCorreo()){
+                    V1.selectFecha();
+                    V1.setPasajeros();
+                    V1.selectVuelo();
+                    V1.imprimeInfoVuelo();
+                    if (V1.vuelo < 1 || V1.vuelo > 5){
+        
+                    }
+                    else{
+                        cout << "Vuelo seleccionado exitosamente" << endl;
+                    }
+                }
+                else
+                {
+                    cout << "El correo ingresado es incorrecto" << endl;
+                }
+            }
+            else
+            {
+                cout << "El nombre ingresado no existe" << endl;
             }
         }
         else{
@@ -65,7 +152,7 @@ void Reserva::proceso1()
 
     if (opcion == 3)
     {
-        if (U1.usuarioExistente == 1){
+        if (U[0].usuarioExistente == 1){
         V1.imprimeInfoVuelo();
         }
         else{
@@ -75,7 +162,7 @@ void Reserva::proceso1()
 
     if (opcion == 4)
     {
-        if (U1.usuarioExistente == 1){
+        if (U[0].usuarioExistente == 1){
         V1.imprimeInfoVuelo();
         cout << "Desea cancelarlo? (1 Si, 0 No)" << endl;
         cin >> cancel;
@@ -83,6 +170,8 @@ void Reserva::proceso1()
         if (cancel == 1){
             cout << "Reserva cancelada exitosamente" << endl;
         V1.vuelo = 0;
+        V1.fecha = 0;
+        V1.pasajeros = 0;
         }
         else {
 
@@ -94,10 +183,270 @@ void Reserva::proceso1()
     }
 }
 
+void Reserva::setkilometrosFinales()
+{
+    if (V1.destino == "Cancún"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 1661;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Japón"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 11324;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Canadá"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 4093;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Alemania"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 9570;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Colombia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 3177;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Brasil"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 6755;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Dubái"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 12340;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Estados Unidos"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 4120;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "España"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 8940;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Italia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 8150;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Qatar"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 11900;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Argentina"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 5920;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Reino Unido"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 7850;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Chile"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 5430;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Países Bajos"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 8560;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Francia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 9120;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Panamá"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 3750;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Perú"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 4600;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Irlanda"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 2300;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Suiza"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 9450;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Rusia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 11200;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "India"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 12800;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Guatemala"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 1780;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Austria"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 10300;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Cuba"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 2900;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Ecuador"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 3350;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Bolivia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 3600;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Australia"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 13500;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Costa Rica"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 2150;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Turquía"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 10750;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "México"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 3900;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Honduras"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 1900;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Singapur"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 8250;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "El Salvador"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 14000;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Inglaterra"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 8600;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+
+    if (V1.destino == "Nicaragua"){
+        for (int i = 0; i < 3; i++) {  
+            U[i].kilometros += 1950;  
+            kilometrosFinales += U[i].kilometros;  
+        } 
+    }
+}
+
+float Reserva::getKilometrosFinales()
+{
+    return kilometrosFinales;
+}
+
 void Reserva::aplicaDescuento()
 {
     if (V1.fecha == 1){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 1879-(1879*0.40);
             descuento2 = 22399-(22399*0.40);
             descuento3 = 3272-(3272*0.40);
@@ -114,7 +463,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 2){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 2150-(2150*0.40);
             descuento2 = 18750-(18750*0.40);
             descuento3 = 5320-(5320*0.40);
@@ -131,7 +480,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 3){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3450-(3450*0.40);
             descuento2 = 17890-(17890*0.40);
             descuento3 = 2780-(2780*0.40);
@@ -148,7 +497,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 4){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 8320-(8320*0.40);
             descuento2 = 9450-(9450*0.40);
             descuento3 = 2650-(2650*0.40);
@@ -165,7 +514,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 5){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 1250-(1250*0.40);
             descuento2 = 14990-(14990*0.40);
             descuento3 = 3870-(3870*0.40);
@@ -182,7 +531,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 6){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 15600-(15600*0.40);
             descuento2 = 2150-(2150*0.40);
             descuento3 = 9870-(9870*0.40);
@@ -199,7 +548,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 7){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3750-(3750*0.40);
             descuento2 = 6890-(6890*0.40);
             descuento3 = 2970-(2970*0.40);
@@ -216,7 +565,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 8){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3250-(3250*0.40);
             descuento2 = 16450-(16450*0.40);
             descuento3 = 9750-(9750*0.40);
@@ -233,7 +582,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 9){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 10250-(10250*0.40);
             descuento2 = 8350-(8350*0.40);
             descuento3 = 12100-(12100*0.40);
@@ -250,7 +599,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 10){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 2180-(2180*0.40);
             descuento2 = 9870-(9870*0.40);
             descuento3 = 15320-(15320*0.40);
@@ -267,7 +616,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 11){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3120-(3120*0.40);
             descuento2 = 16990-(16990*0.40);
             descuento3 = 9250-(9250*0.40);
@@ -284,7 +633,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 12){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 5750-(5750*0.40);
             descuento2 = 3450-(3450*0.40);
             descuento3 = 14850-(14850*0.40);
@@ -301,7 +650,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 13){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 2280-(2280*0.40);
             descuento2 = 6750-(6750*0.40);
             descuento3 = 9980-(9980*0.40);
@@ -318,7 +667,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 14){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3150-(3150*0.40);
             descuento2 = 8750-(8750*0.40);
             descuento3 = 5420-(5420*0.40);
@@ -335,7 +684,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 15){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 6250-(6250*0.40);
             descuento2 = 3980-(3980*0.40);
             descuento3 = 9120-(9120*0.40);
@@ -352,7 +701,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 16){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 16800-(16800*0.40);
             descuento2 = 2350-(2350*0.40);
             descuento3 = 9670-(9670*0.40);
@@ -369,7 +718,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 17){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3250-(3250*0.40);
             descuento2 = 9850-(9850*0.40);
             descuento3 = 8900-(8900*0.40);
@@ -386,7 +735,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 18){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3780-(3780*0.40);
             descuento2 = 6890-(6890*0.40);
             descuento3 = 15600-(15600*0.40);
@@ -403,7 +752,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 19){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 16500-(16500*0.40);
             descuento2 = 2450-(2450*0.40);
             descuento3 = 9720-(9720*0.40);
@@ -420,7 +769,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 20){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3320-(3320*0.40);
             descuento2 = 9980-(9980*0.40);
             descuento3 = 8850-(8850*0.40);
@@ -437,7 +786,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 21){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3850-(3850*0.40);
             descuento2 = 7100-(7100*0.40);
             descuento3 = 15900-(15900*0.40);
@@ -454,7 +803,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 22){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 16700-(16700*0.40);
             descuento2 = 2500-(2500*0.40);
             descuento3 = 9800-(9800*0.40);
@@ -471,7 +820,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 23){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3400-(3400*0.40);
             descuento2 = 9950-(9950*0.40);
             descuento3 = 8920-(8920*0.40);
@@ -488,7 +837,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 24){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3900-(3900*0.40);
             descuento2 = 7200-(7200*0.40);
             descuento3 = 15850-(15850*0.40);
@@ -505,7 +854,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 25){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 16900-(16900*0.40);
             descuento2 = 2600-(2600*0.40);
             descuento3 = 9850-(9850*0.40);
@@ -522,7 +871,7 @@ void Reserva::aplicaDescuento()
     } 
 
     if (V1.fecha == 26){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3500-(3500*0.40);
             descuento2 = 9990-(9990*0.40);
             descuento3 = 8970-(8970*0.40);
@@ -539,7 +888,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 27){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 3780-(3780*0.40);
             descuento2 = 7300-(7300*0.40);
             descuento3 = 16200-(16200*0.40);
@@ -556,7 +905,7 @@ void Reserva::aplicaDescuento()
     }
 
     if (V1.fecha == 28){
-        if (U1.getKilometros() > 50000){
+        if (kilometrosFinales > 50000){
             descuento1 = 17000-(17000*0.40);
             descuento2 = 2700-(2700*0.40);
             descuento3 = 9900-(9900*0.40);
@@ -585,9 +934,14 @@ float Reserva::getDescuento()
 
 void Reserva::imprimeDatos()
 {
-    if (U1.usuarioExistente == 1){
+    if (U[0].usuarioExistente == 1){
+        if (V1.vuelo > 0){
     cout << "Sus datos son: " << endl;
-    cout << "Usuario: " << U1.getNombre() << " Correo: " << U1.getCorreo() << endl;
+    cout << "Usuario: " << iniciaSesionN << " Correo: " << iniciaSesionC << endl;
+    cout << "Número de pasajeros: " << V1.pasajeros << endl;
+    cout << kilometrosFinales << endl;
+    cout << U[0].getKilometros()<<endl;
+    cout << U[1].getKilometros()<<endl;
     cout << "Para la fecha " << V1.fecha << " de Febrero. "; 
     V1.imprimeInfoVuelo();
     cout << "Y en vista de que aplica para nuestro descuento o no, ";
@@ -605,6 +959,10 @@ void Reserva::imprimeDatos()
     }
     if (V1.vuelo == 5){
         cout << "su total con descuento aplicado sería de: $" << descuento5 << endl;
+    }
+    }
+    else{
+        cout << "No se realizó ninguna reserva" << endl;
     }
     }
     else{

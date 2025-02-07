@@ -17,5 +17,5 @@ int main()
     R1.aplicaDescuento();
     R1.imprimeDatos();
     R1.despedida();
-
+    return 0;
 }
