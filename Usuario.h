@@ -20,8 +20,6 @@ class Usuario
         string getNombre();
         string getCorreo();
         int getKilometros();
-        void acumKilometros();
-        bool aplicarDescuento();
         virtual ~Usuario();
 
 };

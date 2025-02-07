@@ -19,13 +19,35 @@ void Usuario::setNombre()
 
 void Usuario::setCorreo()
 {
-    cout << "Ingresa el correo del usuario";
+    cout << "Ingresa el correo del usuario: ";
     cin >> correo;
 }
 
 void Usuario::setKilometros()
 {
-    cout << "Ingresa la cantidad de kilometros ya viajados";
+    cout << "Ingresa la cantidad de kilometros ya viajados: ";
     cin >> kilometros;
 }
+
+string Usuario::getNombre()
+{
+    return nombre;
+}
+
+string Usuario::getCorreo()
+{
+    return correo;
+}
+
+int Usuario::getKilometros()
+{
+    return kilometros;
+}
+
+Usuario::~Usuario()
+{
+
+}
+
+
 
