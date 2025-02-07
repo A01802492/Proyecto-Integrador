@@ -4,8 +4,9 @@
 class Vuelos
 {
     private:
-        int fecha;
+        
     public:
+        int fecha;
         int vuelo;
         Vuelos();
         void selectFecha();
